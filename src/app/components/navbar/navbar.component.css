@@ -1,0 +1,41 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  
+  @media screen and (min-width: 575px) {
+    .logout{
+      position: absolute;right: 0;
+      margin-right: 8px;
+    }
+  
+  }
+
+  @media screen and (max-width: 575px) {
+    
+    .logout{
+      display: grid;
+      place-content: end;
+    }
+  
+  }
+
+  .active{
+    color: red;
+  }
+
+ 

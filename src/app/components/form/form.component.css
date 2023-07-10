@@ -1,0 +1,10 @@
+.tt{
+    width: 900px;
+}
+mat-form-field{
+    width: 100%;
+}
+
+mat-checkbox{
+    pointer-events:none;
+}

@@ -1,0 +1,82 @@
+<app-navbar *ngIf="idUser!=null && is_admin!='ADMIN'"></app-navbar>
+
+<div *ngIf="idUser!=null && is_admin!='ADMIN'" class="container mt-5">
+
+    
+    <div class="container py-4"> 
+        
+        <a type="button" style="width: 150px;" href="/home" class="btn btn-outline-primary">New</a>
+    </div>
+    <div class="container">
+        <h1>Liste Reclamations</h1>
+            <input class="form-control" (keyup)="filter($event.target)" placeholder="Filter">
+        
+    </div>
+    
+    <div class="container col-md-12  table-responsive">
+        
+        <br>
+        <mat-table class="tt" #table matSort [dataSource]="dataSource">
+
+        
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> No </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.id}} </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> User </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}" > {{element.user}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ville">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Ville </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.ville}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="vehicule">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Vehicule </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.vehicule}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="statut">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Statut </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.statut}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateCreation">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> dateCreation </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.dateCreation | date:'yyyy-MM-dd'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dateModification">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> dateModification </mat-header-cell>
+            <mat-cell *matCellDef="let element" [ngClass]="{'encours': element.statut == 'en cours' ,'traite': element.statut == 'traite'}"> {{element.dateModification | date:'yyyy-MM-dd'}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="mod">
+            <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+            <mat-cell *matCellDef="let element"> <a  type="button"   class="btn btn-warning" href="mod/{{element.id}}" >Modifier</a></mat-cell>
+        </ng-container>
+       
+
+        
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator #paginator
+    [pageSize]="15"
+    [showFirstLastButtons]="true">
+    </mat-paginator>
+
+    
+    
+    
+    
+</div>
+
+   
+
+    
+</div>
+
+
+
